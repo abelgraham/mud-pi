@@ -26,23 +26,10 @@ import time
 # import the MUD server class
 from mudserver import MudServer
 
-
-# structure defining the rooms in the game. Try adding more rooms to the game!
-rooms = {
-    "Tavern": {
-        "description": "You're in a cozy tavern warmed by an open fire.",
-        "exits": {"outside": "Outside"},
-    },
-    "Outside": {
-        "description": "You're standing outside a tavern. It's raining.",
-        "exits": {"inside": "Tavern", "mysterious portal": "Spirit Realm"},
-    },
-    "Spirit Realm": {
-        "description": "You're in the spirit realm, you are the punchline to the cosmic joke.",
-        "exits": {"overworld portal": "Outside"},
-    },
-
-}
+import os
+import json
+BASE_DIR = os.getcwd()
+rooms = json.load(open(os.path.join(BASE_DIR, 'rooms.json')))
 
 # stores the players in the game
 players = {}
@@ -224,7 +211,7 @@ while True:
             else:
                 # send back an 'unknown exit' message
                 mud.send_message(id, "Unknown exit '{}'".format(ex))
-
+                
         # some other, unrecognised command
         else:
             # send back an 'unknown command' message
