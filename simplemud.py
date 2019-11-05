@@ -36,7 +36,12 @@ rooms = {
     "Outside": {
         "description": "You're standing outside a tavern. It's raining.",
         "exits": {"inside": "Tavern"},
-    }
+    },
+    "Spirit Realm": {
+        "description": "You're in the spirit realm, you are the punchline to the cosmic joke.",
+        "exits": {"overworld": "Outside"},
+    },
+
 }
 
 # stores the players in the game
